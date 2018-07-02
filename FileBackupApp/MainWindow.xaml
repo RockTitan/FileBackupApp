@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileBackupApp"
         mc:Ignorable="d"
-        Title="File Backup App" Height="400" Width="600">
+        Title="File Backup App" Height="400" Width="600" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="TextBlockTemp" TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"/>
@@ -57,19 +57,22 @@
         <!-- Top -->
         <Grid Margin="10" Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="72"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="80"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Label x:Name="LabelLanguage" Margin="0" Foreground="#FF06F7D6" >Language :</Label>
-                <ComboBox HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="180"/>
+                <Label x:Name="LabelLanguage" Margin="0" VerticalAlignment="Center" Foreground="#FF06F7D6" >Language :</Label>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-
+                <ComboBox x:Name="comboBoxLanguage" SelectedIndex="0" HorizontalAlignment="Center" Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Height="25" SelectionChanged="comboBoxLanguage_SelectionChanged">
+                    <ComboBoxItem Content="中文"/>
+                    <ComboBoxItem Content="English"/>
+                </ComboBox>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                
+                <CheckBox Name="topmostCheckBox" Margin="0" VerticalAlignment="Center" Checked="topmostCheckBox_Checked" Unchecked="topmostCheckBox_Unchecked"></CheckBox>
+                <Label x:Name="LabelTopmost" Margin="0" VerticalAlignment="Center" Foreground="#FF06F7D6" >Topmost</Label>
             </StackPanel>
         </Grid>
 
@@ -102,7 +105,12 @@
                 <Button x:Name="BtnDesinationBrowsePath" Width="60" Click="BtnDesinationBrowsePath_Click">Browse...</Button>
             </StackPanel>
         </Grid>
-        
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="4" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <Button x:Name="BtnStart" Width="80" Height="30" Margin="0,0,0,0" HorizontalContentAlignment="Center" Click="BtnStart_Click" Content="Start" VerticalAlignment="Bottom" HorizontalAlignment="Right" VerticalContentAlignment="Center" MinWidth="2"/>
+            <Button x:Name="BtnCloseMainWindow" Width="80" Height="30" Margin="10,0,0,0" HorizontalContentAlignment="Center" Click="BtnCloseMainWindow_Click" Content="Close" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        </StackPanel>
 
 
     </Grid>
