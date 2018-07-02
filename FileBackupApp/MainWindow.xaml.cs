@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using System.Threading;
 using Microsoft.Win32;
+using System.IO;
 
 namespace FileBackupApp
 {
@@ -58,12 +59,21 @@ namespace FileBackupApp
 
         private void BtnSource_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSource = new System.Windows.Forms.FolderBrowserDialog();
+            folderBrowserDialogSource.ShowDialog();
+            TextBoxSource.Text = folderBrowserDialogSource.SelectedPath;
 
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Filter = "(*.*)|*.*";
+            //openFileDialog.ShowDialog();
+            //TextBoxSource.Text = System.IO.Path.GetFullPath(openFileDialog.FileName);
         }
 
         private void BtnDesination_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialogDesination = new OpenFileDialog();
+            System.Windows.Forms.FolderBrowserDialog folderBrowserDialogDesination = new System.Windows.Forms.FolderBrowserDialog();
+            folderBrowserDialogDesination.ShowDialog();
+            TextBoxDesination.Text = folderBrowserDialogDesination.SelectedPath;
         }
 
         private void BtnSourceBrowsePath_Click(object sender, RoutedEventArgs e)
@@ -78,7 +88,10 @@ namespace FileBackupApp
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-
+            for (int i = 0; i < 100; i++)
+            {
+                TimeSpan defaultTimeout = new TimeSpan(1000);
+            }
         }
 
         private void BtnCloseMainWindow_Click(object sender, RoutedEventArgs e)
@@ -113,6 +126,9 @@ namespace FileBackupApp
                 BtnDesinationBrowsePath.Content = "Browse...";
                 BtnStart.Content = "Start";
                 BtnCloseMainWindow.Content = "Close";
+                rbMirror.Content = "Mirror";
+                rbBackup.Content = "Backup";
+                rbSynchronize.Content = "Synchronize";
             }
             else
             {
@@ -124,6 +140,9 @@ namespace FileBackupApp
                 BtnDesinationBrowsePath.Content = "瀏覽...";
                 BtnStart.Content = "開始";
                 BtnCloseMainWindow.Content = "關閉";
+                rbMirror.Content = "鏡像";
+                rbBackup.Content = "備份";
+                rbSynchronize.Content = "同步";
             }
         }
 
